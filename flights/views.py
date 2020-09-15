@@ -26,10 +26,9 @@ class CreateBooking(CreateAPIView):
 	serializer_class = UpdateBookingSerializer
 
 	def perform_create(self, serializer):
-
 		flight_id = self.kwargs.get('flight_id')
 		flight = Flight.objects.get(id=flight_id)
-		
+
 		serializer.save(user=self.request.user, flight=flight)
 
 
